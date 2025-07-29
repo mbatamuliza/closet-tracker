@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="text-center mt-5">
+        <h1>Welcome to Closet Tracker</h1>
+        <p class="lead">Keep Track Of Your Wardrobe In One Place!</p>
+        {% if user.is_authenticated %}
+          <a href="{% url 'clothingitem_list' %}" class="btn btn-dark">View My Closet</a>
+        {% else %}
+        <a href="{% url 'signup' %}" class="btn btn-primary">Create Account</a>
+        <a href="{% url 'login' %}" class="btn btn-secondary">Login</a>
+        {% endif %}
+    </div>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+   <div class="d-flex justify-content-between align-items-center mb-4">
+     <h2>Your Clothing Items</h2>
+     <a href="{% url 'clothingitem_create' %}" class="btn btn-success mb-3">+ Add New Item</a>
+   </div>
+  
+  {% for item in clothing_items %}
+    <div class="cardshadow-sm border-0 rounded-4 p-4 mb-2">
+      <div class="card-body">
+        <h5 class="card-tittle">{{ item.name }}</h5>
+        <p class="card-text text-muted">
+           <strong>Category:</strong> {{ item.category }} |
+           <stron>Color:</stron>{{ item.color }} |
+           <strong>Size:</strong> {{ item.size }}
+        </p>
+        <div class="btn-group">
+           <a href="{% url 'clothingitem_detail' item.id %}" class="btn btn-sm btn-dark">View</a>
+           <a href="{% url 'clothingitem_update' item.id %}" class="btn btn-sm btn-primary">Edit</a>
+           <a href="{% url 'clothingitem_delete' item.id %}" class="btn btn-sm btn-danger">Delete</a>
+        </div>
+    </div>
+<div>
+{% empty %}
+  <div class="alert alert-info">You have no clothing items yet. Click the button above to add one!</div>
+ {% endfor %}
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>{{ clothing_items.name }}</h2>
+  <img src="{{ clothing_item.image }}" alt="{{ clothing_item.name }}" style="max-width: 300px;">
+  <ul class="list-group mt-3">
+    <li class="list-group-item">Category: {{ clothing_item.category }}</li>
+    <li class="list-group-item">color: {{ clothing_item.color }}</li>
+    <li class="list-group-item">Size: {{ clothing_item.size }}</li>
+    <li class="list-group-item">Notes: {{ clothing_item.notes }}</li>
+  </ul>
+  <a href="{% url 'clothingitem_update' clothing_item.id %}" class="btn btn-primary mt-3">Edit</a>
+  <a href="{% url 'clothingitem_delete' clothing_item.id %}" class="btn btn-danger mt-3">Delete</a>
+{% endblock %}
